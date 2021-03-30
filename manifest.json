@@ -1,0 +1,35 @@
+{
+  "name": "VIA - Visual Internet Analyzer",
+  "description": "Расширение позволяет блокировать материалы для взрослых и контент неприличного содержания.",
+  "version": "1.0",
+  "manifest_version": 2,
+  "content_security_policy": "script-src 'self'; object-src 'self'",
+  "permissions": ["alarms", "tabs", "notifications", "storage"],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "options_page": "options.html",
+  "browser_action": {
+    "default_title": "VIA",
+    "default_popup": "popup.html",
+	"default_background": "background.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+            "http://*/*",
+            "https://*/*"
+        ],
+      "js": ["jquery-3.2.1.min.js", "script_in_content.js"],
+	  "css": ["mystyles.css"]
+    }
+  ],
+  
+  "icons": {
+    "16": "logo.png",
+    "32": "logo.png",
+    "48": "logo.png",
+    "128": "logo.png"
+  }
+}
